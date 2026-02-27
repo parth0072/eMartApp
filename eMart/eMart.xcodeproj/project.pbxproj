@@ -20,6 +20,8 @@
 		B003000700000001 /* ProductCard.swift in Sources */        = {isa = PBXBuildFile; fileRef = B003000800000001; };
 		B003000900000001 /* SectionHeader.swift in Sources */      = {isa = PBXBuildFile; fileRef = B003000A00000001; };
 		B003000B00000001 /* AppTextField.swift in Sources */       = {isa = PBXBuildFile; fileRef = B003000C00000001; };
+		/* Screens */
+		B004000100000001 /* HomeView.swift in Sources */           = {isa = PBXBuildFile; fileRef = B004000200000001; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		B003000800000001 /* ProductCard.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
 		B003000A00000001 /* SectionHeader.swift */   = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		B003000C00000001 /* AppTextField.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		/* Screens */
+		B004000200000001 /* HomeView.swift */        = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				B001000400000001 /* ContentView.swift */,
 				B002000F00000001 /* Theme */,
 				B003000F00000001 /* Components */,
+				B004000F00000001 /* Screens */,
 				B001000600000001 /* Assets.xcassets */,
 				B001000E00000001 /* Preview Content */,
 			);
@@ -98,6 +103,22 @@
 				B003000C00000001 /* AppTextField.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B004000F00000001 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B004000E00000001 /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B004000E00000001 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B004000200000001 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		B001000E00000001 /* Preview Content */ = {
@@ -189,6 +210,8 @@
 				B003000700000001 /* ProductCard.swift in Sources */,
 				B003000900000001 /* SectionHeader.swift in Sources */,
 				B003000B00000001 /* AppTextField.swift in Sources */,
+				/* Screens */
+				B004000100000001 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

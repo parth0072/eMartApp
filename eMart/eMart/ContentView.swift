@@ -36,26 +36,19 @@ struct ContentView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Tab content
-            TabView(selection: $selectedTab) {
-                HomeView()
-                    .tag(AppTab.home)
 
-                ExploreView()
-                    .tag(AppTab.explore)
-
-                CartView()
-                    .tag(AppTab.cart)
-
-                WishlistView()
-                    .tag(AppTab.wishlist)
-
-                ProfileView()
-                    .tag(AppTab.profile)
+            // Tab content — switch avoids horizontal swipe conflicts
+            // with inner carousels (e.g. banner TabView in HomeView)
+            Group {
+                switch selectedTab {
+                case .home:     HomeView()
+                case .explore:  ExploreView()
+                case .cart:     CartView()
+                case .wishlist: WishlistView()
+                case .profile:  ProfileView()
+                }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            // Keep .ignoresSafeArea so content goes edge-to-edge;
-            // the custom tab bar handles bottom safe area.
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             // Custom Tab Bar
             CustomTabBar(selectedTab: $selectedTab, cartCount: cartCount)
@@ -73,7 +66,8 @@ struct CustomTabBar: View {
         HStack(spacing: 0) {
             ForEach(AppTab.allCases, id: \.self) { tab in
                 Spacer()
-                TabBarItem(tab: tab, selectedTab: $selectedTab, badge: tab == .cart ? cartCount : 0)
+                TabBarItem(tab: tab, selectedTab: $selectedTab,
+                           badge: tab == .cart ? cartCount : 0)
                 Spacer()
             }
         }
@@ -125,24 +119,7 @@ struct TabBarItem: View {
     }
 }
 
-// MARK: - Placeholder Views (to be replaced screen by screen)
-struct HomeView: View {
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: AppSpacing.xl) {
-                    Text("🏠 Home Screen")
-                        .font(AppFont.h2)
-                        .foregroundStyle(Color.textPrimary)
-                }
-                .padding(AppSpacing.lg)
-                .padding(.bottom, 90)           // clear custom tab bar
-            }
-            .background(Color.bgPrimary)
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
+// MARK: - Placeholder Views (replaced screen by screen)
 
 struct ExploreView: View {
     var body: some View {
