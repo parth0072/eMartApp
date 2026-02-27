@@ -1,0 +1,26 @@
+# Xcode derived data & build
+xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xcbkptlist
+build/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# CocoaPods (if added later)
+Pods/
+Podfile.lock
+
+# fastlane (if added later)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Playground
+*.playground/playground.xcworkspace
