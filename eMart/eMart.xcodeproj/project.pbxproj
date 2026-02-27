@@ -30,6 +30,10 @@
 		B006000100000001 /* AuthViewModel.swift in Sources */      = {isa = PBXBuildFile; fileRef = B006000200000001; };
 		/* Profile */
 		B008000100000001 /* ProfileView.swift in Sources */        = {isa = PBXBuildFile; fileRef = B008000200000001; };
+		/* Location */
+		B00A000100000001 /* Address.swift in Sources */            = {isa = PBXBuildFile; fileRef = B00A000200000001; };
+		B00B000100000001 /* LocationViewModel.swift in Sources */  = {isa = PBXBuildFile; fileRef = B00B000200000001; };
+		B00C000100000001 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00C000200000001; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		B006000200000001 /* AuthViewModel.swift */   = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		/* Profile */
 		B008000200000001 /* ProfileView.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		/* Location */
+		B00A000200000001 /* Address.swift */         = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		B00B000200000001 /* LocationViewModel.swift */= {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		B00C000200000001 /* LocationPickerView.swift */= {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +137,17 @@
 				B004000E00000001 /* Home */,
 				B007000E00000001 /* Auth */,
 				B008000E00000001 /* Profile */,
+				B00C000E00000001 /* Location */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		B00C000E00000001 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B00C000200000001 /* LocationPickerView.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		B004000E00000001 /* Home */ = {
@@ -162,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B005000200000001 /* User.swift */,
+				B00A000200000001 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				B006000200000001 /* AuthViewModel.swift */,
+				B00B000200000001 /* LocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -272,6 +291,10 @@
 				B005000100000001 /* User.swift in Sources */,
 				/* ViewModels */
 				B006000100000001 /* AuthViewModel.swift in Sources */,
+				B00B000100000001 /* LocationViewModel.swift in Sources */,
+				/* Location */
+				B00A000100000001 /* Address.swift in Sources */,
+				B00C000100000001 /* LocationPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +429,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eMart/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "eMart uses your location to show nearby delivery options and auto-fill your address.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -435,6 +459,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eMart/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "eMart uses your location to show nearby delivery options and auto-fill your address.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

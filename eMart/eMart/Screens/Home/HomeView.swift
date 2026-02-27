@@ -57,8 +57,11 @@ struct BeautyDeal: Identifiable {
 
 struct HomeView: View {
 
-    @State private var searchText  = ""
-    @State private var bannerPage  = 0
+    @EnvironmentObject var locationVM: LocationViewModel
+
+    @State private var searchText        = ""
+    @State private var bannerPage        = 0
+    @State private var showLocationPicker = false
 
     // MARK: Sample Data
     let banners: [PromoBanner] = [
@@ -131,28 +134,35 @@ struct HomeView: View {
 
     // MARK: Body
     var body: some View {
-        VStack(spacing: 0) {
+        NavigationStack {
+            VStack(spacing: 0) {
 
-            // ── Static: logo + bell only, flush to safe area ────────────
-            topBarSection
+                // ── Static: logo + bell only, flush to safe area ─────────
+                topBarSection
 
-            // ── Scrollable: location, search + all content ───────────────
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
-                    locationSection
-                    searchSection
-                    bannerSection
-                    categoriesSection
-                    previousOrderSection
-                    featuredProductsSection
-                    topBrandsSection
-                    beautyDealsSection
+                // ── Scrollable: location, search + all content ───────────
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        locationSection
+                        searchSection
+                        bannerSection
+                        categoriesSection
+                        previousOrderSection
+                        featuredProductsSection
+                        topBrandsSection
+                        beautyDealsSection
+                    }
+                    .padding(.bottom, 100)
                 }
-                .padding(.bottom, 100)
+                .background(Color.bgPrimary)
             }
-            .background(Color.bgPrimary)
+            .background(Color.bgCard)
+            .toolbar(.hidden, for: .navigationBar)
+            .navigationDestination(isPresented: $showLocationPicker) {
+                LocationPickerView()
+                    .environmentObject(locationVM)
+            }
         }
-        .background(Color.bgCard)
     }
 
     // MARK: — Top Bar
@@ -203,26 +213,47 @@ struct HomeView: View {
 
     // MARK: — Location
     private var locationSection: some View {
-        Button(action: {}) {
+        Button { showLocationPicker = true } label: {
             HStack(spacing: AppSpacing.md) {
 
-                // Teal pin circle
+                // Pin icon
                 ZStack {
                     Circle()
                         .fill(Color(hex: "#E0F2F1"))
                         .frame(width: 46, height: 46)
-                    Image(systemName: "location.fill")
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color(hex: "#4DB6AC"))
+                    if locationVM.isLocating {
+                        ProgressView()
+                            .tint(Color(hex: "#4DB6AC"))
+                            .scaleEffect(0.85)
+                    } else {
+                        Image(systemName: "location.fill")
+                            .font(.system(size: 18))
+                            .foregroundStyle(Color(hex: "#4DB6AC"))
+                    }
                 }
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Bengaluru")
-                        .font(AppFont.h4)
-                        .foregroundStyle(Color.textPrimary)
-                    Text("BTM Layout, 500628")
-                        .font(AppFont.bodySM)
-                        .foregroundStyle(Color.textSecondary)
+                    HStack(spacing: AppSpacing.xs) {
+                        Text(locationVM.selectedAddress?.displayCity ?? "Select Location")
+                            .font(AppFont.h4)
+                            .foregroundStyle(Color.textPrimary)
+                        if let label = locationVM.selectedAddress?.label {
+                            Text(label.rawValue)
+                                .font(AppFont.labelSM)
+                                .foregroundStyle(Color.primaryOrange)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.primaryPastel)
+                                .clipShape(Capsule())
+                        }
+                    }
+                    Text(
+                        locationVM.selectedAddress?.displayArea.isEmpty == false
+                            ? (locationVM.selectedAddress?.displayArea ?? "")
+                            : "Tap to set your location"
+                    )
+                    .font(AppFont.bodySM)
+                    .foregroundStyle(Color.textSecondary)
                 }
 
                 Spacer()
