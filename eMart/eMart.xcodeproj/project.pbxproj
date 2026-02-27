@@ -22,6 +22,14 @@
 		B003000B00000001 /* AppTextField.swift in Sources */       = {isa = PBXBuildFile; fileRef = B003000C00000001; };
 		/* Screens */
 		B004000100000001 /* HomeView.swift in Sources */           = {isa = PBXBuildFile; fileRef = B004000200000001; };
+		B007000100000001 /* LoginView.swift in Sources */          = {isa = PBXBuildFile; fileRef = B007000200000001; };
+		B007000300000001 /* RegisterView.swift in Sources */       = {isa = PBXBuildFile; fileRef = B007000400000001; };
+		/* Models */
+		B005000100000001 /* User.swift in Sources */               = {isa = PBXBuildFile; fileRef = B005000200000001; };
+		/* ViewModels */
+		B006000100000001 /* AuthViewModel.swift in Sources */      = {isa = PBXBuildFile; fileRef = B006000200000001; };
+		/* Profile */
+		B008000100000001 /* ProfileView.swift in Sources */        = {isa = PBXBuildFile; fileRef = B008000200000001; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +49,14 @@
 		B003000C00000001 /* AppTextField.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		/* Screens */
 		B004000200000001 /* HomeView.swift */        = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B007000200000001 /* LoginView.swift */       = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B007000400000001 /* RegisterView.swift */    = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		/* Models */
+		B005000200000001 /* User.swift */            = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		/* ViewModels */
+		B006000200000001 /* AuthViewModel.swift */   = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		/* Profile */
+		B008000200000001 /* ProfileView.swift */     = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,8 @@
 				B002000F00000001 /* Theme */,
 				B003000F00000001 /* Components */,
 				B004000F00000001 /* Screens */,
+				B005000F00000001 /* Models */,
+				B006000F00000001 /* ViewModels */,
 				B001000600000001 /* Assets.xcassets */,
 				B001000E00000001 /* Preview Content */,
 			);
@@ -109,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				B004000E00000001 /* Home */,
+				B007000E00000001 /* Auth */,
+				B008000E00000001 /* Profile */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -119,6 +139,39 @@
 				B004000200000001 /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		B007000E00000001 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B007000200000001 /* LoginView.swift */,
+				B007000400000001 /* RegisterView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B008000E00000001 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B008000200000001 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B005000F00000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B005000200000001 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B006000F00000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B006000200000001 /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B001000E00000001 /* Preview Content */ = {
@@ -212,6 +265,13 @@
 				B003000B00000001 /* AppTextField.swift in Sources */,
 				/* Screens */
 				B004000100000001 /* HomeView.swift in Sources */,
+				B007000100000001 /* LoginView.swift in Sources */,
+				B007000300000001 /* RegisterView.swift in Sources */,
+				B008000100000001 /* ProfileView.swift in Sources */,
+				/* Models */
+				B005000100000001 /* User.swift in Sources */,
+				/* ViewModels */
+				B006000100000001 /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

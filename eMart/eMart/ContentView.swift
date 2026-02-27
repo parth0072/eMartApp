@@ -129,6 +129,11 @@ struct ExploreView: View {
                     .padding(.bottom, 90)
             }
             .background(Color.bgPrimary)
+            .navigationTitle("Explore")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
 }
@@ -145,6 +150,11 @@ struct CartView: View {
             .padding(.bottom, 90)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.bgPrimary)
+            .navigationTitle("My Cart")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
 }
@@ -160,18 +170,11 @@ struct WishlistView: View {
             .padding(.bottom, 90)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.bgPrimary)
-        }
-    }
-}
-
-struct ProfileView: View {
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack { Text("👤 Profile Screen").font(AppFont.h2) }
-                    .padding(.bottom, 90)
-            }
-            .background(Color.bgPrimary)
+            .navigationTitle("Wishlist")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
 }
