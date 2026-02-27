@@ -29,6 +29,30 @@ struct PreviousOrder: Identifiable {
     let promoLabel: String?
 }
 
+struct FeaturedProduct: Identifiable {
+    let id = UUID()
+    let name: String
+    let price: Double
+    let originalPrice: Double?
+    let rating: Double
+    let symbolName: String
+    var isFavorite: Bool = false
+    var cartQty: Int = 0
+}
+
+struct TopBrand: Identifiable {
+    let id = UUID()
+    let name: String
+    let tagline: String
+}
+
+struct BeautyDeal: Identifiable {
+    let id = UUID()
+    let brand: String
+    let discountLabel: String
+    let accentColor: Color
+}
+
 // MARK: - HomeView
 
 struct HomeView: View {
@@ -76,21 +100,59 @@ struct HomeView: View {
                       promoLabel: "Get Flat 10% OFF"),
     ]
 
+    @State var featuredProducts: [FeaturedProduct] = [
+        FeaturedProduct(name: "Fresh Avocado Pack", price: 120, originalPrice: 150,
+                        rating: 4.5, symbolName: "leaf.fill", isFavorite: true, cartQty: 2),
+        FeaturedProduct(name: "Greek Yogurt 500g",  price: 89,  originalPrice: nil,
+                        rating: 4.2, symbolName: "cup.and.saucer.fill"),
+        FeaturedProduct(name: "Organic Honey Jar",  price: 299, originalPrice: 349,
+                        rating: 4.8, symbolName: "drop.fill"),
+        FeaturedProduct(name: "Whole Grain Bread",  price: 65,  originalPrice: nil,
+                        rating: 4.0, symbolName: "square.grid.3x3.fill"),
+    ]
+
+    let topBrands: [TopBrand] = [
+        TopBrand(name: "Hollister",  tagline: "California"),
+        TopBrand(name: "Chanel",     tagline: "Paris"),
+        TopBrand(name: "Prada",      tagline: "Milano"),
+        TopBrand(name: "Gucci",      tagline: "Florence"),
+        TopBrand(name: "Zara",       tagline: "España"),
+        TopBrand(name: "H&M",        tagline: "Sweden"),
+    ]
+
+    let beautyDeals: [BeautyDeal] = [
+        BeautyDeal(brand: "Revlon",     discountLabel: "Upto 10% OFF", accentColor: Color(hex: "#4DB6AC")),
+        BeautyDeal(brand: "Lakmé",      discountLabel: "Upto 15% OFF", accentColor: Color(hex: "#5C9BD6")),
+        BeautyDeal(brand: "Garnier",    discountLabel: "Upto 20% OFF", accentColor: Color(hex: "#66BB6A")),
+        BeautyDeal(brand: "Maybelline", discountLabel: "Upto 12% OFF", accentColor: Color(hex: "#AB47BC")),
+        BeautyDeal(brand: "Clinique",   discountLabel: "Upto 18% OFF", accentColor: Color(hex: "#EC407A")),
+        BeautyDeal(brand: "Sugar",      discountLabel: "Upto 25% OFF", accentColor: Color(hex: "#FF8A65")),
+    ]
+
     // MARK: Body
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 0) {
-                topBarSection
-                locationSection
-                searchSection
-                bannerSection
-                    .padding(.top, 2)
-                categoriesSection
-                previousOrderSection
+        VStack(spacing: 0) {
+
+            // ── Static: logo + bell only, flush to safe area ────────────
+            topBarSection
+
+            // ── Scrollable: location, search + all content ───────────────
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    locationSection
+                    searchSection
+                    bannerSection
+                    categoriesSection
+                    previousOrderSection
+                    featuredProductsSection
+                    topBrandsSection
+                    beautyDealsSection
+                }
+                .padding(.bottom, 100)
             }
-            .padding(.bottom, 100)
+            .background(Color.bgPrimary)
         }
-        .background(Color.bgPrimary)
+        .background(Color.bgCard)
     }
 
     // MARK: — Top Bar
@@ -135,8 +197,7 @@ struct HomeView: View {
             }
         }
         .padding(.horizontal, AppSpacing.lg)
-        .padding(.top, AppSpacing.md)
-        .padding(.bottom, AppSpacing.sm)
+        .padding(.vertical, AppSpacing.sm)
         .background(Color.bgCard)
     }
 
@@ -269,6 +330,61 @@ struct HomeView: View {
         }
         .padding(.top, AppSpacing.sm)
         .padding(.bottom, AppSpacing.xl)
+        .background(Color.bgPrimary)
+    }
+
+    // MARK: — Featured Products
+    private var featuredProductsSection: some View {
+        VStack(spacing: AppSpacing.md) {
+            SectionHeader(title: "Featured Products", onAction: {})
+
+            LazyVGrid(
+                columns: [GridItem(.flexible(), spacing: AppSpacing.md),
+                          GridItem(.flexible(), spacing: AppSpacing.md)],
+                spacing: AppSpacing.md
+            ) {
+                ForEach($featuredProducts) { $product in
+                    HomeProductCard(product: $product)
+                }
+            }
+            .padding(.horizontal, AppSpacing.lg)
+        }
+        .padding(.vertical, AppSpacing.lg)
+        .background(Color.bgPrimary)
+    }
+
+    // MARK: — Top Brands
+    private var topBrandsSection: some View {
+        VStack(spacing: AppSpacing.md) {
+            SectionHeader(title: "Top Brands", onAction: {})
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: AppSpacing.md) {
+                    ForEach(topBrands) { brand in
+                        TopBrandCard(brand: brand)
+                    }
+                }
+                .padding(.horizontal, AppSpacing.lg)
+            }
+        }
+        .padding(.vertical, AppSpacing.lg)
+        .background(Color.bgCard)
+    }
+
+    // MARK: — Exclusive Beauty Deals
+    private var beautyDealsSection: some View {
+        VStack(spacing: AppSpacing.md) {
+            SectionHeader(title: "Exclusive Beauty Deals", onAction: {})
+            LazyVGrid(
+                columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())],
+                spacing: AppSpacing.md
+            ) {
+                ForEach(beautyDeals) { deal in
+                    BeautyDealCard(deal: deal)
+                }
+            }
+            .padding(.horizontal, AppSpacing.lg)
+        }
+        .padding(.vertical, AppSpacing.lg)
         .background(Color.bgPrimary)
     }
 }
@@ -458,6 +574,216 @@ struct PreviousOrderCard: View {
         .background(Color.bgCard)
         .clipShape(RoundedRectangle(cornerRadius: AppRadius.lg))
         .cardShadow()
+    }
+}
+
+// MARK: - Home Product Card
+
+struct HomeProductCard: View {
+    @Binding var product: FeaturedProduct
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+
+            // Image area
+            ZStack(alignment: .topLeading) {
+                RoundedRectangle(cornerRadius: AppRadius.md)
+                    .fill(Color.bgInput)
+                    .frame(height: 130)
+                    .overlay(
+                        Image(systemName: product.symbolName)
+                            .font(.system(size: 48))
+                            .foregroundStyle(Color.primaryOrange.opacity(0.5))
+                    )
+
+                // Heart top-left
+                Button {
+                    product.isFavorite.toggle()
+                } label: {
+                    Image(systemName: product.isFavorite ? "heart.fill" : "heart")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(product.isFavorite ? Color.error : Color.textTertiary)
+                        .frame(width: 32, height: 32)
+                        .background(Color.white.opacity(0.9))
+                        .clipShape(Circle())
+                }
+                .padding(8)
+            }
+
+            // Info
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                Text(product.name)
+                    .font(AppFont.labelMD)
+                    .foregroundStyle(Color.textPrimary)
+                    .lineLimit(2)
+                    .padding(.top, AppSpacing.sm)
+
+                // Price + rating row
+                HStack(alignment: .center) {
+                    Text("₹\(Int(product.price))")
+                        .font(AppFont.priceSM)
+                        .foregroundStyle(Color.primaryOrange)
+
+                    if let orig = product.originalPrice {
+                        Text("₹\(Int(orig))")
+                            .font(AppFont.bodySM)
+                            .foregroundStyle(Color.textTertiary)
+                            .strikethrough()
+                    }
+
+                    Spacer()
+
+                    HStack(spacing: 3) {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 10))
+                            .foregroundStyle(Color.ratingYellow)
+                        Text(String(format: "%.1f", product.rating))
+                            .font(AppFont.labelSM)
+                            .foregroundStyle(Color.textSecondary)
+                    }
+                }
+
+                // Add to cart / Stepper
+                if product.cartQty == 0 {
+                    Button {
+                        product.cartQty = 1
+                    } label: {
+                        Text("Add to cart")
+                            .font(AppFont.labelMD)
+                            .foregroundStyle(Color.primaryOrange)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 36)
+                            .background(Color.primaryPastel)
+                            .clipShape(RoundedRectangle(cornerRadius: AppRadius.sm))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: AppRadius.sm)
+                                    .stroke(Color.primaryOrange, lineWidth: 1.2)
+                            )
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                } else {
+                    HStack(spacing: 0) {
+                        Button { if product.cartQty > 0 { product.cartQty -= 1 } } label: {
+                            Image(systemName: "minus")
+                                .font(.system(size: 13, weight: .bold))
+                                .foregroundStyle(Color.primaryOrange)
+                                .frame(width: 34, height: 34)
+                        }
+                        Text("\(product.cartQty)")
+                            .font(AppFont.h4)
+                            .foregroundStyle(Color.textPrimary)
+                            .frame(maxWidth: .infinity)
+                        Button { product.cartQty += 1 } label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 13, weight: .bold))
+                                .foregroundStyle(Color.white)
+                                .frame(width: 34, height: 34)
+                                .background(Color.primaryOrange)
+                                .clipShape(RoundedRectangle(cornerRadius: AppRadius.xs))
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 36)
+                    .background(Color.bgInput)
+                    .clipShape(RoundedRectangle(cornerRadius: AppRadius.sm))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: AppRadius.sm)
+                            .stroke(Color.borderLight, lineWidth: 1)
+                    )
+                }
+            }
+            .padding(.horizontal, AppSpacing.sm)
+            .padding(.bottom, AppSpacing.sm)
+        }
+        .background(Color.bgCard)
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.lg))
+        .cardShadow()
+    }
+}
+
+// MARK: - Top Brand Card
+
+struct TopBrandCard: View {
+    let brand: TopBrand
+
+    var body: some View {
+        Button(action: {}) {
+            VStack(spacing: AppSpacing.xs) {
+                // Logo placeholder circle
+                Circle()
+                    .fill(Color.bgInput)
+                    .frame(width: 56, height: 56)
+                    .overlay(
+                        Text(String(brand.name.prefix(1)))
+                            .font(.system(size: 22, weight: .bold, design: .rounded))
+                            .foregroundStyle(Color.textSecondary)
+                    )
+
+                Text(brand.name)
+                    .font(AppFont.labelMD)
+                    .foregroundStyle(Color.textPrimary)
+                    .lineLimit(1)
+
+                Text(brand.tagline)
+                    .font(AppFont.caption)
+                    .foregroundStyle(Color.textTertiary)
+                    .lineLimit(1)
+            }
+            .frame(width: 90)
+            .padding(.vertical, AppSpacing.md)
+            .background(Color.bgCard)
+            .clipShape(RoundedRectangle(cornerRadius: AppRadius.md))
+            .overlay(
+                RoundedRectangle(cornerRadius: AppRadius.md)
+                    .stroke(Color.borderLight, lineWidth: 1)
+            )
+            .softShadow()
+        }
+        .buttonStyle(ScaleButtonStyle())
+    }
+}
+
+// MARK: - Beauty Deal Card
+
+struct BeautyDealCard: View {
+    let deal: BeautyDeal
+
+    var body: some View {
+        Button(action: {}) {
+            VStack(spacing: AppSpacing.sm) {
+                // Brand logo placeholder
+                RoundedRectangle(cornerRadius: AppRadius.sm)
+                    .fill(Color.bgInput)
+                    .frame(height: 54)
+                    .overlay(
+                        Text(deal.brand)
+                            .font(AppFont.labelSM)
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color.textSecondary)
+                    )
+
+                // Discount badge
+                Text(deal.discountLabel)
+                    .font(AppFont.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, AppSpacing.xs)
+                    .padding(.vertical, AppSpacing.xs)
+                    .frame(maxWidth: .infinity)
+                    .background(deal.accentColor)
+                    .clipShape(Capsule())
+            }
+            .padding(AppSpacing.sm)
+            .background(Color.bgCard)
+            .clipShape(RoundedRectangle(cornerRadius: AppRadius.md))
+            .overlay(
+                RoundedRectangle(cornerRadius: AppRadius.md)
+                    .stroke(Color.borderLight, lineWidth: 1)
+            )
+            .softShadow()
+        }
+        .buttonStyle(ScaleButtonStyle())
     }
 }
 
