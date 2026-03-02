@@ -66,6 +66,8 @@
 		B032000100000001 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032000200000001; };
 		/* Wishlist (new) */
 		B033000100000001 /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033000200000001; };
+		/* Notifications (new) */
+		B038000100000001 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038000200000001; };
 		/* Profile (new) */
 		B034000100000001 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034000200000001; };
 		B035000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035000200000001; };
@@ -132,6 +134,8 @@
 		B032000200000001 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		/* Wishlist (new) */
 		B033000200000001 /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
+		/* Notifications (new) */
+		B038000200000001 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		/* Profile (new) */
 		B034000200000001 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		B035000200000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				B028000E00000001 /* Cart */,
 				B031000E00000001 /* Orders */,
 				B033000E00000001 /* Wishlist */,
+				B038000E00000001 /* Notifications */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -358,6 +363,14 @@
 			path = Wishlist;
 			sourceTree = "<group>";
 		};
+		B038000E00000001 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				B038000200000001 /* NotificationsView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -484,6 +497,8 @@
 				B032000100000001 /* OrderDetailView.swift in Sources */,
 				/* Wishlist (new) */
 				B033000100000001 /* WishlistView.swift in Sources */,
+				/* Notifications (new) */
+				B038000100000001 /* NotificationsView.swift in Sources */,
 				/* Profile (new) */
 				B034000100000001 /* EditProfileView.swift in Sources */,
 				B035000100000001 /* SettingsView.swift in Sources */,

@@ -10,6 +10,7 @@ struct eMarApp: App {
 
     @State private var showSplash = true
     @AppStorage("emart_hasSeenOnboarding") private var hasSeenOnboarding = false
+    @AppStorage("emart_darkMode") private var darkMode = false
 
     var body: some Scene {
         WindowGroup {
@@ -38,6 +39,7 @@ struct eMarApp: App {
             .environmentObject(orderVM)
             .animation(.easeInOut(duration: 0.35), value: authVM.isAuthenticated)
             .animation(.easeInOut(duration: 0.35), value: hasSeenOnboarding)
+            .preferredColorScheme(darkMode ? .dark : .light)
         }
     }
 }
