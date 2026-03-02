@@ -77,6 +77,27 @@ class AuthViewModel: ObservableObject {
         }
     }
 
+    func updateProfile(fullName: String, email: String, phone: String) {
+        guard var user = currentUser else { return }
+        let oldKey = normalized(user.email)
+        let newKey = normalized(email)
+
+        user.fullName = fullName
+        user.email    = email
+        user.phone    = phone
+
+        if let record = store[oldKey] {
+            var updated = record
+            updated.user = user
+            store.removeValue(forKey: oldKey)
+            store[newKey] = updated
+        }
+
+        saveStore()
+        UserDefaults.standard.set(newKey, forKey: UDKey.loggedIn)
+        currentUser = user
+    }
+
     // MARK: - Persistence
 
     private func loadStore() {
