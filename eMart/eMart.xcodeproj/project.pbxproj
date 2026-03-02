@@ -34,6 +34,43 @@
 		B00A000100000001 /* Address.swift in Sources */            = {isa = PBXBuildFile; fileRef = B00A000200000001; };
 		B00B000100000001 /* LocationViewModel.swift in Sources */  = {isa = PBXBuildFile; fileRef = B00B000200000001; };
 		B00C000100000001 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00C000200000001; };
+		/* Models (new) */
+		B036000100000001 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036000200000001; };
+		B037000100000001 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037000200000001; };
+		B010000100000001 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010000200000001; };
+		B011000100000001 /* AppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011000200000001; };
+		/* ViewModels (new) */
+		B012000100000001 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B012000200000001; };
+		B013000100000001 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013000200000001; };
+		B014000100000001 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014000200000001; };
+		/* Splash (new) */
+		B020000100000001 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020000200000001; };
+		/* Onboarding (new) */
+		B021000100000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B021000200000001; };
+		/* Auth (new) */
+		B022000100000001 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022000200000001; };
+		B023000100000001 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023000200000001; };
+		/* Search (new) */
+		B024000100000001 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024000200000001; };
+		/* Explore (new) */
+		B025000100000001 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025000200000001; };
+		B026000100000001 /* CategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026000200000001; };
+		/* Product (new) */
+		B027000100000001 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027000200000001; };
+		/* Cart (new) */
+		B028000100000001 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028000200000001; };
+		B029000100000001 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029000200000001; };
+		B030000100000001 /* OrderSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030000200000001; };
+		/* Orders (new) */
+		B031000100000001 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031000200000001; };
+		B032000100000001 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032000200000001; };
+		/* Wishlist (new) */
+		B033000100000001 /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B033000200000001; };
+		/* Notifications (new) */
+		B038000100000001 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038000200000001; };
+		/* Profile (new) */
+		B034000100000001 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034000200000001; };
+		B035000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035000200000001; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +102,43 @@
 		B00A000200000001 /* Address.swift */         = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B00B000200000001 /* LocationViewModel.swift */= {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		B00C000200000001 /* LocationPickerView.swift */= {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
+		/* Models (new) */
+		B036000200000001 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B037000200000001 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		B010000200000001 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B011000200000001 /* AppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotification.swift; sourceTree = "<group>"; };
+		/* ViewModels (new) */
+		B012000200000001 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		B013000200000001 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		B014000200000001 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		/* Splash (new) */
+		B020000200000001 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		/* Onboarding (new) */
+		B021000200000001 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		/* Auth (new) */
+		B022000200000001 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		B023000200000001 /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		/* Search (new) */
+		B024000200000001 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		/* Explore (new) */
+		B025000200000001 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		B026000200000001 /* CategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailView.swift; sourceTree = "<group>"; };
+		/* Product (new) */
+		B027000200000001 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		/* Cart (new) */
+		B028000200000001 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		B029000200000001 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		B030000200000001 /* OrderSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessView.swift; sourceTree = "<group>"; };
+		/* Orders (new) */
+		B031000200000001 /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		B032000200000001 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
+		/* Wishlist (new) */
+		B033000200000001 /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
+		/* Notifications (new) */
+		B038000200000001 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		/* Profile (new) */
+		B034000200000001 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		B035000200000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +212,15 @@
 				B007000E00000001 /* Auth */,
 				B008000E00000001 /* Profile */,
 				B00C000E00000001 /* Location */,
+							B020000E00000001 /* Splash */,
+				B021000E00000001 /* Onboarding */,
+				B024000E00000001 /* Search */,
+				B025000E00000001 /* Explore */,
+				B027000E00000001 /* Product */,
+				B028000E00000001 /* Cart */,
+				B031000E00000001 /* Orders */,
+				B033000E00000001 /* Wishlist */,
+				B038000E00000001 /* Notifications */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -163,6 +246,8 @@
 			children = (
 				B007000200000001 /* LoginView.swift */,
 				B007000400000001 /* RegisterView.swift */,
+				B022000200000001 /* ForgotPasswordView.swift */,
+				B023000200000001 /* OTPVerificationView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -171,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				B008000200000001 /* ProfileView.swift */,
+				B034000200000001 /* EditProfileView.swift */,
+				B035000200000001 /* SettingsView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -180,6 +267,10 @@
 			children = (
 				B005000200000001 /* User.swift */,
 				B00A000200000001 /* Address.swift */,
+				B036000200000001 /* Product.swift */,
+				B037000200000001 /* CartItem.swift */,
+				B010000200000001 /* Order.swift */,
+				B011000200000001 /* AppNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +280,9 @@
 			children = (
 				B006000200000001 /* AuthViewModel.swift */,
 				B00B000200000001 /* LocationViewModel.swift */,
+				B012000200000001 /* StoreViewModel.swift */,
+				B013000200000001 /* CartViewModel.swift */,
+				B014000200000001 /* OrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -199,6 +293,82 @@
 				B001000800000001 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B020000E00000001 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B020000200000001 /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		B021000E00000001 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B021000200000001 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B024000E00000001 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B024000200000001 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B025000E00000001 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				B025000200000001 /* ExploreView.swift */,
+				B026000200000001 /* CategoryDetailView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		B027000E00000001 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B027000200000001 /* ProductDetailView.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		B028000E00000001 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				B028000200000001 /* CartView.swift */,
+				B029000200000001 /* CheckoutView.swift */,
+				B030000200000001 /* OrderSuccessView.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		B031000E00000001 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				B031000200000001 /* OrdersView.swift */,
+				B032000200000001 /* OrderDetailView.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		B033000E00000001 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				B033000200000001 /* WishlistView.swift */,
+			);
+			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		B038000E00000001 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				B038000200000001 /* NotificationsView.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +465,43 @@
 				/* Location */
 				B00A000100000001 /* Address.swift in Sources */,
 				B00C000100000001 /* LocationPickerView.swift in Sources */,
+				/* Models (new) */
+				B036000100000001 /* Product.swift in Sources */,
+				B037000100000001 /* CartItem.swift in Sources */,
+				B010000100000001 /* Order.swift in Sources */,
+				B011000100000001 /* AppNotification.swift in Sources */,
+				/* ViewModels (new) */
+				B012000100000001 /* StoreViewModel.swift in Sources */,
+				B013000100000001 /* CartViewModel.swift in Sources */,
+				B014000100000001 /* OrderViewModel.swift in Sources */,
+				/* Splash (new) */
+				B020000100000001 /* SplashView.swift in Sources */,
+				/* Onboarding (new) */
+				B021000100000001 /* OnboardingView.swift in Sources */,
+				/* Auth (new) */
+				B022000100000001 /* ForgotPasswordView.swift in Sources */,
+				B023000100000001 /* OTPVerificationView.swift in Sources */,
+				/* Search (new) */
+				B024000100000001 /* SearchView.swift in Sources */,
+				/* Explore (new) */
+				B025000100000001 /* ExploreView.swift in Sources */,
+				B026000100000001 /* CategoryDetailView.swift in Sources */,
+				/* Product (new) */
+				B027000100000001 /* ProductDetailView.swift in Sources */,
+				/* Cart (new) */
+				B028000100000001 /* CartView.swift in Sources */,
+				B029000100000001 /* CheckoutView.swift in Sources */,
+				B030000100000001 /* OrderSuccessView.swift in Sources */,
+				/* Orders (new) */
+				B031000100000001 /* OrdersView.swift in Sources */,
+				B032000100000001 /* OrderDetailView.swift in Sources */,
+				/* Wishlist (new) */
+				B033000100000001 /* WishlistView.swift in Sources */,
+				/* Notifications (new) */
+				B038000100000001 /* NotificationsView.swift in Sources */,
+				/* Profile (new) */
+				B034000100000001 /* EditProfileView.swift in Sources */,
+				B035000100000001 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

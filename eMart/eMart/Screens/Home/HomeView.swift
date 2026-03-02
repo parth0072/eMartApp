@@ -58,10 +58,12 @@ struct BeautyDeal: Identifiable {
 struct HomeView: View {
 
     @EnvironmentObject var locationVM: LocationViewModel
+    @EnvironmentObject var storeVM: StoreViewModel
 
-    @State private var searchText        = ""
-    @State private var bannerPage        = 0
-    @State private var showLocationPicker = false
+    @State private var searchText             = ""
+    @State private var bannerPage             = 0
+    @State private var showLocationPicker     = false
+    @State private var navigateToNotifications = false
 
     // MARK: Sample Data
     let banners: [PromoBanner] = [
@@ -162,6 +164,9 @@ struct HomeView: View {
                 LocationPickerView()
                     .environmentObject(locationVM)
             }
+            .navigationDestination(isPresented: $navigateToNotifications) {
+                NotificationsView()
+            }
         }
     }
 
@@ -180,31 +185,24 @@ struct HomeView: View {
 
             Spacer()
 
-            // Language selector
-            HStack(spacing: 4) {
-                Text("Eng")
-                    .font(AppFont.labelMD)
-                    .foregroundStyle(Color.textSecondary)
-                Image(systemName: "chevron.down")
-                    .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(Color.textTertiary)
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 7)
-            .background(Color.bgInput)
-            .clipShape(Capsule())
-
             // Notification bell
-            ZStack(alignment: .topTrailing) {
-                Image(systemName: "bell.fill")
-                    .font(.system(size: 20))
-                    .foregroundStyle(Color.primaryOrange)
-                    .frame(width: 42, height: 42)
-                    .background(Color.primaryPastel)
-                    .clipShape(RoundedRectangle(cornerRadius: AppRadius.sm))
-                BadgeView(count: 2)
-                    .offset(x: 6, y: -6)
+            Button {
+                navigateToNotifications = true
+            } label: {
+                ZStack(alignment: .topTrailing) {
+                    Image(systemName: "bell.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(Color.primaryOrange)
+                        .frame(width: 42, height: 42)
+                        .background(Color.primaryPastel)
+                        .clipShape(RoundedRectangle(cornerRadius: AppRadius.sm))
+                    if storeVM.unreadCount > 0 {
+                        BadgeView(count: storeVM.unreadCount)
+                            .offset(x: 6, y: -6)
+                    }
+                }
             }
+            .buttonStyle(ScaleButtonStyle())
         }
         .padding(.horizontal, AppSpacing.lg)
         .padding(.vertical, AppSpacing.sm)

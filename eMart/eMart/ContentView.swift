@@ -31,14 +31,12 @@ enum AppTab: String, CaseIterable {
 
 // MARK: - Root ContentView
 struct ContentView: View {
+    @EnvironmentObject var cartVM: CartViewModel
     @State private var selectedTab: AppTab = .home
-    @State private var cartCount: Int = 2
 
     var body: some View {
         ZStack(alignment: .bottom) {
-
-            // Tab content — switch avoids horizontal swipe conflicts
-            // with inner carousels (e.g. banner TabView in HomeView)
+            // Tab content
             Group {
                 switch selectedTab {
                 case .home:     HomeView()
@@ -51,7 +49,7 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             // Custom Tab Bar
-            CustomTabBar(selectedTab: $selectedTab, cartCount: cartCount)
+            CustomTabBar(selectedTab: $selectedTab, cartCount: cartVM.itemCount)
         }
         .ignoresSafeArea(edges: .bottom)
     }
@@ -119,67 +117,12 @@ struct TabBarItem: View {
     }
 }
 
-// MARK: - Placeholder Views (replaced screen by screen)
-
-struct ExploreView: View {
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack { Text("🔍 Explore Screen").font(AppFont.h2) }
-                    .padding(.bottom, 90)
-            }
-            .background(Color.bgPrimary)
-            .navigationTitle("Explore")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-        }
-    }
-}
-
-struct CartView: View {
-    var body: some View {
-        NavigationStack {
-            EmptyStateView(
-                icon: "cart",
-                title: "Your cart is empty",
-                message: "Browse products and add items to your cart",
-                actionTitle: "Start Shopping"
-            )
-            .padding(.bottom, 90)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.bgPrimary)
-            .navigationTitle("My Cart")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-        }
-    }
-}
-
-struct WishlistView: View {
-    var body: some View {
-        NavigationStack {
-            EmptyStateView(
-                icon: "heart",
-                title: "No wishlist items",
-                message: "Save your favourite products here"
-            )
-            .padding(.bottom, 90)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.bgPrimary)
-            .navigationTitle("Wishlist")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color.primaryOrange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-        }
-    }
-}
-
 // MARK: - Preview
 #Preview {
     ContentView()
+        .environmentObject(CartViewModel())
+        .environmentObject(StoreViewModel())
+        .environmentObject(OrderViewModel())
+        .environmentObject(AuthViewModel())
+        .environmentObject(LocationViewModel())
 }

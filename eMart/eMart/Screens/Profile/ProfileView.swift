@@ -2,6 +2,10 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var orderVM: OrderViewModel
+    @EnvironmentObject var storeVM: StoreViewModel
+
+    @State private var showAddressSheet = false
 
     var body: some View {
         NavigationStack {
@@ -46,11 +50,14 @@ struct ProfileView: View {
 
                     // ── Stats row ──────────────────────────────────────────
                     HStack(spacing: 0) {
-                        ProfileStat(value: "12", label: "Orders")
+                        ProfileStat(
+                            value: "\(orderVM.orders(for: authVM.currentUser?.id ?? UUID()).count)",
+                            label: "Orders"
+                        )
                         Divider().frame(height: 36)
-                        ProfileStat(value: "4", label: "Wishlist")
+                        ProfileStat(value: "\(storeVM.wishlistedProducts.count)", label: "Wishlist")
                         Divider().frame(height: 36)
-                        ProfileStat(value: "2", label: "Reviews")
+                        ProfileStat(value: "\(storeVM.reviews.count)", label: "Reviews")
                     }
                     .padding(.vertical, AppSpacing.lg)
                     .background(Color.bgCard)
@@ -60,25 +67,47 @@ struct ProfileView: View {
 
                     // ── Account section ────────────────────────────────────
                     ProfileSection(title: "Account") {
-                        ProfileRow(icon: "person.fill",     label: "Personal Info",       color: Color.primaryOrange)
-                        ProfileRow(icon: "phone.fill",      label: authVM.currentUser?.phone ?? "", color: Color.info, isSubtitle: true)
-                        ProfileRow(icon: "location.fill",   label: "Saved Addresses",     color: Color.success)
-                        ProfileRow(icon: "creditcard.fill", label: "Payment Methods",     color: Color.warning)
+                        NavigationLink(destination: EditProfileView()) {
+                            ProfileRow(icon: "person.fill", label: "Personal Info", color: Color.primaryOrange)
+                        }
+                        .buttonStyle(.plain)
+
+                        ProfileRow(icon: "phone.fill",
+                                   label: authVM.currentUser?.phone ?? "",
+                                   color: Color.info,
+                                   isSubtitle: true)
+
+                        Button { showAddressSheet = true } label: {
+                            ProfileRow(icon: "location.fill", label: "Saved Addresses", color: Color.success)
+                        }
+                        .buttonStyle(.plain)
+
+                        ProfileRow(icon: "creditcard.fill", label: "Payment Methods", color: Color.warning)
                     }
 
-                    // ── Orders section ─────────────────────────────────────
+                    // ── Shopping section ───────────────────────────────────
                     ProfileSection(title: "Shopping") {
-                        ProfileRow(icon: "bag.fill",       label: "My Orders",           color: Color.primaryOrange)
-                        ProfileRow(icon: "heart.fill",     label: "Wishlist",            color: Color.error)
-                        ProfileRow(icon: "star.fill",      label: "My Reviews",          color: Color.ratingYellow)
-                        ProfileRow(icon: "tag.fill",       label: "Coupons & Offers",    color: Color.success)
+                        NavigationLink(destination: OrdersView()) {
+                            ProfileRow(icon: "bag.fill", label: "My Orders", color: Color.primaryOrange)
+                        }
+                        .buttonStyle(.plain)
+
+                        ProfileRow(icon: "heart.fill",     label: "Wishlist",         color: Color.error)
+                        ProfileRow(icon: "star.fill",      label: "My Reviews",       color: Color.ratingYellow)
+                        ProfileRow(icon: "tag.fill",       label: "Coupons & Offers", color: Color.success)
                     }
 
-                    // ── Support section ────────────────────────────────────
+                    // ── Help & Settings section ────────────────────────────
                     ProfileSection(title: "Help & Settings") {
-                        ProfileRow(icon: "bell.fill",              label: "Notifications",        color: Color.info)
-                        ProfileRow(icon: "questionmark.circle.fill", label: "Help & Support",     color: Color.primaryOrange)
-                        ProfileRow(icon: "doc.text.fill",          label: "Terms & Privacy",      color: Color.textSecondary)
+                        ProfileRow(icon: "bell.fill",               label: "Notifications",  color: Color.info)
+                        ProfileRow(icon: "questionmark.circle.fill", label: "Help & Support", color: Color.primaryOrange)
+
+                        NavigationLink(destination: SettingsView()) {
+                            ProfileRow(icon: "gearshape.fill", label: "Settings", color: Color.textSecondary)
+                        }
+                        .buttonStyle(.plain)
+
+                        ProfileRow(icon: "doc.text.fill", label: "Terms & Privacy", color: Color.textTertiary)
                     }
 
                     // ── Logout ─────────────────────────────────────────────
@@ -118,6 +147,9 @@ struct ProfileView: View {
             .toolbarBackground(Color.primaryOrange, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
+            .sheet(isPresented: $showAddressSheet) {
+                LocationPickerView()
+            }
         }
     }
 }
@@ -165,7 +197,7 @@ private struct ProfileSection<Content: View>: View {
     }
 }
 
-private struct ProfileRow: View {
+struct ProfileRow: View {
     let icon: String
     let label: String
     let color: Color
@@ -207,4 +239,6 @@ private struct ProfileRow: View {
 #Preview {
     ProfileView()
         .environmentObject(AuthViewModel())
+        .environmentObject(OrderViewModel())
+        .environmentObject(StoreViewModel())
 }
